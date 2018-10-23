@@ -20,8 +20,8 @@ const undefinedHandler = value => (value ? value : "數值不存在");
  * 美妝教主部落客清單
  * 每頁一個 request
  */
-const pageUrl = page => `https://www.beautyblog.com.tw/blog/list/${page}`;
-const pages = [1, 2, 3, 4];
+const pageUrl = page => `https://www.beautyblog.com.tw/blog/list/page/${page}`;
+const pages = ["1", "2", "3", "4"];
 
 const pageRequest = page => {
   return new Promise((resolve, reject) => {
@@ -62,7 +62,6 @@ const combineRequest = () => {
           data.push([response[y][v]]);
         }
       }
-      console.log();
       const csv = headers.concat(data);
       download(csv, `${new Date().getTime()}-file`);
     })
